@@ -18,7 +18,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//middlewares: funcion que se ejecuta antes de llegar alas rutas
+//middlewares: funcion que se ejecuta antes de llegar a las rutas
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 
@@ -29,3 +29,4 @@ app.use('/', indexRoutes);
 app.listen(app.get('port') , () => {
     console.log(`Server on port ${app.get('port')}`);
 });
+
