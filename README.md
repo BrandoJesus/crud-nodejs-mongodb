@@ -1,1 +1,0 @@
-echo # crud-nodejs-mongodb

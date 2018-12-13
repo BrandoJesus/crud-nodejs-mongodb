@@ -1,0 +1,53 @@
+<% include partials/_header  %>
+    <!-- <pre> <%= tasks %> </pre> -->
+
+    <div class="container">
+        <div class="row">
+            <!-- form -->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="title" placeholder="Title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" cols="80" rows="5" class="form-control" placeholder="Description"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block"> Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- list -->
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0; i < tasks.length; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= tasks[i].title %></td>
+                            <td><%= tasks[i].description %></td>
+                            <td>
+                                <a href="" class="btn btn-dark">Done</a>
+                                <a href="" class="btn btn-danger">Delete</a>
+                                <a href="" class="btn btn-success">Update</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<% include partials/_footer  %>
