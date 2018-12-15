@@ -19,6 +19,25 @@ router.post('/add', async (req, res) => {
     await task.save();
     res.redirect('/');
     // res.send('Received');
-})
+});
+
+router.get('/turn/:id', async (req, res) => {
+    const { id } = req.params;
+    const task = await Task.findById(id);
+    task.status = !task.status;
+    await task.save();
+    res.redirect('/');
+});
+
+router.get('/delete/:id', async (req, res) => {
+    const { id } = req.params;
+    await Task.remove({_id: id});
+    res.redirect('/');
+});
+
+router.post('update/:active', (req, res) => {
+    console.log(req.params);
+    Task.update()
+});
 
 module.exports = router;
