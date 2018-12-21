@@ -35,9 +35,37 @@ router.get('/delete/:id', async (req, res) => {
     res.redirect('/');
 });
 
-router.post('update/:active', (req, res) => {
-    console.log(req.params);
-    Task.update()
+router.get('/edit/:id', async (req, res) => {
+    // console.log(req.params);
+    const { id } = req.params;
+    const task = await Task.findById(id);
+    console.log(task);
+    res.render('edit', {
+        task
+    });
+});
+
+router.post('/edit/:id', async (req, res) =>{
+    const {id} = req.params;
+    await Task.update({_id: id}, req.body);
+    res.redirect('/');
+});
+
+router.post('/search', async (req, res) => {
+    // const task = new Task(req.body);
+    console.log('req.body ', req.body);
+    const { title } = req.body;
+    console.log('title ', title);
+    const tasks = await Task.find({"title": title});
+    
+    console.log('tasks ', tasks);
+    if(tasks.length){
+        res.render('index', {
+            tasks
+        });
+    } else {
+        res.redirect('/');
+    }
 });
 
 module.exports = router;

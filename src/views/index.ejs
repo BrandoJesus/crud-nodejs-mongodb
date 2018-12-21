@@ -3,6 +3,14 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-md-5 offset-md-3">
+                <form action="/search" method="POST">
+                    <input type="text" name="title">
+                    <button type="submit" class="btn btn-primary btn-md"> Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
             <!-- form -->
             <div class="col-md-5">
                 <div class="card">
@@ -38,9 +46,9 @@
                             <td><%= tasks[i].title %></td>
                             <td><%= tasks[i].description %></td>
                             <td>
-                                <a href="/turn/<%= tasks[i].id %>" class="btn <%= tasks[i].status ? 'btn-success' : 'btn-dark' %>">Done</a>
-                                <a href="/delete/<%= tasks[i].id %>" class="btn btn-danger">Delete</a>
-                                <a href="/edit/<%= tasks[i].id %>" class="btn btn-info">Update</a>
+                                <a href="/turn/<%= tasks[i]._id %>" class="btn <%= tasks[i].status ? 'btn-success' : 'btn-dark' %>">Done</a>
+                                <a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger">Delete</a>
+                                <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">Update</a>
                             </td>
                         </tr>
                         <% } %>
